@@ -1,1 +1,117 @@
-test	testtest	tetstejifnfo
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="shortcut icon" href="cash.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="Controllers/investmentsCtrl.js"></script>
+    <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+
+    <link rel="stylesheet" href="main.css" type="text/css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="content">
+    <div ng-app="myApp" ng-controller="investmentsCtrl" class="md-padding" ng-cloak>
+        <div class="head">
+        </div>
+        <div class="left">
+        </div>
+            <div class="right">
+                <div class="inputs">
+                    <h1>Search by investors</h1>
+
+                    <md-input-container>
+                        <label>Money</label>
+                        <input ng-model="money">
+                    </md-input-container>
+
+                    <div layout="row">
+                        <md-input-container>
+                            <md-select ng-model="country" md-selected-text="getSelectedCountry()">
+                                <md-optgroup label="country">
+                                    <md-option ng-repeat="country in resultCountries" ng-value="country">{{ country }}</md-option>
+                                </md-optgroup>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+
+                    <div layout="row">
+                        <md-input-container>
+                            <md-select ng-model="areas"
+                                       multiple
+                                       md-selected-text="getSelectedAreas()">
+                                <md-optgroup label="area">
+                                    <md-option ng-repeat="area in resultAreas" ng-value="area">{{ area }}</md-option>
+                                </md-optgroup>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+
+                    <div class="btn_filter">
+                        <button class="search" ng-click="find()">Find investors</button>
+                        <button class="cancel" ng-click="cancel()">Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="cards_block">
+            <div ng-repeat="investment in resultInvestments">
+                <div class="card">
+                    <img ng-src="{{investment.imgUrl}}" alt="Avatar" >
+                    <div class="container">
+                        <h4><b>{{investment.name}}</b></h4>
+                        <p>{{investment.areas.join(", ")}}</p>
+                        <p>{{investment.money}}</p>
+                        <p>{{investment.country}}</p>
+                    </div>
+                </div>
+            </div>
+
+        <!--<table ng-table="investmentsTable" class="" ng-show="isFind">-->
+            <!--<tr ng-repeat="investment in $data">-->
+                <!--<td title="'Photo'" sortable="'imgUrl'">-->
+                    <!--<img ng-src="{{investment.imgUrl}}" /></td>-->
+                <!--<td title="'Name'" sortable="'name'">-->
+                    <!--{{investment.name}}</td>-->
+                <!--<td title="'Money'" sortable="'money'">-->
+                    <!--{{investment.money}}</td>-->
+                <!--<td title="'Country'" sortable="'country'">-->
+                    <!--{{investment.country}}</td>-->
+                <!--<td title="'Arreas'" sortable="'areas'">-->
+                    <!--{{investment.areas.join(", ")}}</td>-->
+            <!--</tr>-->
+        <!--</table>-->
+        </div>
+    </div>
+        <div class="footer">
+            <div class="footer_content">
+                <p class="orangery">The Orangery</p>
+                <img class="logo" src="log.png" />
+                <div className="icons">
+                    <a href="https://www.facebook.com/the.orangery.hildesheim" target="_blank"><img class="icon" src="facebook2.svg"  /></a>
+                    <a href="https://www.instagram.com/the.orangery.hildesheim/" target="_blank"><img class="icon" src="instagram2.svg" alt=""></a>
+                    <a href="https://www.youtube.com/channel/UCIJetBvDbVQni4G1hZNfuYg/" target="_blank"><img class="icon" src="youtube2.svg" alt=""></a>
+                </div>
+            </div>
+
+        </div>
+
+            <div class="footer_under">
+                <p class="copy">© COPYRIGHT 2018 ALL RIGHTS RESERVED</p>
+            </div>
+
+    </div>
+    </div>
+</body>
+</html>
